@@ -1,18 +1,18 @@
 import glob,os,shutil,sys
 
 def separete(location,ext,arqPorPasta):
-	location = glob.glob(location + '/' +'*.'+ ext)
-	size = len(location)
+	files = glob.glob(location + '/' +'*.'+ ext)
+	size = len(files)
 	cont = 0
 	cont2 = '0'
 	while(cont < size):
-		location = glob.glob(location + '/' +'*.'+ ext)
+		files = glob.glob(location + '/' +'*.'+ ext)
 		os.mkdir(cont2)
-		for i in range(0,1000):
-			shutil.move([location[i],cont2])
-			cont+=1
-			cont2 = (int(cont2) + 1)
-			cont2 = str(cont2)
+		for i in range(0,int(arqPorPasta)):
+			shutil.move(files[i],os.getcwd()+'/'+cont2)
+		cont+=1
+		cont2 = (int(cont2) + 1)
+		cont2 = str(cont2)
 
 if __name__ == "__main__":
 	try:
